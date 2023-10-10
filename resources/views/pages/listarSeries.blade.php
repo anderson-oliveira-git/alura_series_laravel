@@ -1,18 +1,22 @@
-<!DOCTYPE html>
+@extends('template.template')
 
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laravel | Alura</title>
-    </head>
-    <body>
-        @isset($series)
-            <ul>
-                @foreach ($series as $serie)
-                    <li>{{ $serie }}</li>
-                @endforeach
-            </ul>
-        @endisset
-    </body>
-</html>
+@section('title', 'Controle de series')
+
+@section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Series</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-end mb-2">
+        <a class="btn btn-primary" href="{{ route('serie.create') }}">Adicionar</a>
+    </div>
+    @isset($series)
+        <ul class="list-group">
+            @foreach ($series as $serie)
+                <li class="list-group-item">{{ $serie->name }}</li>
+            @endforeach
+        </ul>
+    @endisset
+@endsection
